@@ -1,42 +1,37 @@
-# 📅 Court Agenda App (أجندة المحامي)
+<div align="center"><img src="https://raw.githubusercontent.com/matef-hub/atefdodo/main/assets/research-signal.svg" width="100%" alt="Legal research · verified data · applied AI"/></div>
 
-تطبيق بسيط لإدارة قضايا وجلسات المحامين في مصر.  
-مبني باستخدام **Streamlit + SQLite**، مع دعم كامل للغة العربية (RTL) وخط جميل.
+# Court Agenda | أجندة المحامي
 
----
+**Streamlit · Python · SQLite · Arabic RTL**
 
-## ✨ المميزات
-- 🔒 تسجيل مستخدمين مع كلمات مرور مشفرة (bcrypt).
-- 🔑 إدارة جلسات آمنة باستخدام Tokens + Timeout.
-- ➕ إضافة / ✏️ تعديل / ❌ حذف القضايا والجلسات.
-- 📅 عرض كل الجلسات في جدول وكروت منظمة.
-- 🔍 فلترة حسب الموكل أو المحكمة.
-- 📊 إحصائيات سريعة بعدد الجلسات والعملاء.
-- 📥 تصدير جميع الجلسات إلى ملف CSV للنسخ الاحتياطي.
-- 📌 إضافة الجلسات مباشرة إلى **Google Calendar**.
-- 🎨 دعم كامل للـ **RTL** وخط عربي (Cairo).
+A lightweight local court-agenda experiment for recording hearings and associated matter details through a browser-based Streamlit interface.
 
----
+## Verified structure
 
-## 🛠️ المتطلبات
-- Python 3.9 أو أحدث
-- مكتبات Python:
-  ```bash
-  pip install -r requirements.txt
+- `app.py` — Streamlit application and local SQLite access.
+- `requirements.txt` — Streamlit, pandas and bcrypt.
+- `.devcontainer/` — optional development-container settings.
 
-## 🔮 خطط مستقبلية
+```mermaid
+flowchart LR
+  L["Login / session"] --> H["Hearing details"]
+  H --> S["SQLite database"]
+  S --> R["Filter / export"]
+```
 
-📲 إشعارات على البريد أو التليجرام للجلسات القريبة.
+## Run
 
-☁️ نسخ احتياطي تلقائي على Google Drive.
+```bash
+python -m pip install -r requirements.txt
+streamlit run app.py
+```
 
-📊 جداول تفاعلية باستخدام AG-Grid.
+Start in a local environment; configure safe storage and access before exposing the service to any network. The application is a historical Streamlit prototype, distinct from [the current Flutter Judicial Agenda](https://github.com/matef-hub/agenda).
 
-👥 دعم فرق المحامين (Multi-user Collaboration).
+### Notes
 
-👨‍💻 المساهمة
-أي محامي أو مطور يقدر يقترح أفكار أو يعدل الكود.
-Pull Requests مرحب بيها ✨
+- **bcrypt** is included; verify session and authorization behavior before using real client data.
+- Backup and calendar integrations mentioned in older documentation should be individually verified; do not rely on them without an end-to-end restore test.
+- Avoid uploading private hearings, customer names or court documents into public issues.
 
-## 📜 الرخصة
-MIT License – حرية كاملة في الاستخدام والتعديل.
+**Developed by [Mohamed Atef](https://github.com/matef-hub)** — Egyptian lawyer & Legal Tech Developer.
